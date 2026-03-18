@@ -31,7 +31,7 @@ export function Modal({ children, setShowModal, size }: Props) {
           tabIndex={-1}
           className={classNames(
             "flex flex-col relative z-50 box-border outline-none sm:mx-6 sm:my-16 shadow-small overflow-y-hidden w-full mx-4 my-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-neutral-900",
-            size === "lg" ? "max-w-[40rem]" : "max-w-md"
+            size === "lg" ? "max-w-[40rem]" : "max-w-md",
           )}
           id=":rh:"
           data-open="true"
@@ -80,7 +80,7 @@ export function Modal({ children, setShowModal, size }: Props) {
               stroke="currentColor"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
+              strokeWidth="2"
               viewBox="0 0 24 24"
               width="1em"
             >

@@ -53,7 +53,7 @@ export function DeployInstance() {
   const { deployInstance } = useGlobalStates();
   const allDeployInstanceFieldsFills = useMemo(
     () => Object.values(deployInstance).every((value) => Boolean(value)),
-    [deployInstance]
+    [deployInstance],
   );
 
   useEffect(() => {
@@ -63,6 +63,7 @@ export function DeployInstance() {
   async function deployInstanceRequest() {
     if (!allDeployInstanceFieldsFills) return;
     setPaymentStatus("deploying");
+    console.log(deployInstance);
     const data = (
       await clientPoster<PaymentDetail>("/api/payment", deployInstance)
     ).data;
@@ -79,9 +80,9 @@ export function DeployInstance() {
 
     for (const attempt_number of Array.from(Array(20).keys())) {
       attempt = attempt_number + 1;
-      console.log(`Attempt ${attempt}`);
+
       const data = await clientFetcher<PaymentVerificationDetail>(
-        `/api/payment/${paymentDetail?.hash}`
+        `/api/payment/${paymentDetail?.hash}`,
       );
 
       if (data.response === 200) break;
@@ -147,7 +148,7 @@ export function DeployInstance() {
           {Object.entries(instanceTypeOS[deployInstance.type]).map(
             ([key, value]) => (
               <InstanceOS key={key} {...value} os={key as OSTypes} />
-            )
+            ),
           )}
         </div>
       </div>
@@ -179,7 +180,7 @@ export function DeployInstance() {
               {Object.entries(instancePlans[deployInstance.type]).map(
                 ([key, value]) => (
                   <InstancePlan key={key} {...value} plan={key} />
-                )
+                ),
               )}
             </tbody>
           </table>
@@ -192,7 +193,7 @@ export function DeployInstance() {
             "z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 min-w-unit-20 h-unit-10 text-small gap-unit-2 [&amp;>svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none  text-primary-foreground data-[hover=true]:opacity-hover max-w-fit px-8 rounded py-2 text-sm",
             allDeployInstanceFieldsFills
               ? "bg-primary cursor-pointer"
-              : "cursor-default"
+              : "cursor-default",
           )}
           type="button"
           onClick={deployInstanceRequest}

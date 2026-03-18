@@ -29,13 +29,15 @@ export async function GET(req: Request, context: { params: Params }) {
   else if (user !== orderInformation.user)
     return Response.json(
       { message: "User and order creator mismatch" },
-      { status: 401 }
+      { status: 401 },
     );
 
   const { sentTo, toPay, location, id: orderId } = orderInformation;
 
   // ---------- Checking payment ----------
+  console.debug(`ORder - ${orderInformation.sentTo}`);
   const balance = await web3.eth.getBalance(sentTo);
+  console.debug(`Balance - ${balance}`);
 
   if (balance < Number(web3.utils.toWei(toPay, "ether"))) {
     log(`Transaction amount doesn't match`);
@@ -64,7 +66,7 @@ export async function GET(req: Request, context: { params: Params }) {
   if (!instance)
     return Response.json(
       { message: "Error in creating an instance" },
-      { status: 400 }
+      { status: 400 },
     );
 
   addDocument<StoredInstance>({
@@ -78,7 +80,7 @@ export async function GET(req: Request, context: { params: Params }) {
       type: orderInformation.type,
       terminatesAt: new Timestamp(
         currentTimestamp.seconds + 30 * 24 * 60 * 60,
-        currentTimestamp.nanoseconds
+        currentTimestamp.nanoseconds,
       ),
       ...instance,
     },

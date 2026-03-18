@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   if (!body.location || !body.os || !body.plan || !body.type)
     return Response.json(
       { message: "All fields are required" },
-      { status: 400 }
+      { status: 400 },
     );
 
   const address = await getUnlockedAccount();

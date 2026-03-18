@@ -29,7 +29,7 @@ const TimeLine = () => {
         x2="1098"
         y2="51.0001"
         stroke="url(#paint0_linear_146_1295)"
-        stroke-width="4"
+        strokeWidth="4"
       />
       <g filter="url(#filter0_d_146_1295)">
         <circle
@@ -43,7 +43,7 @@ const TimeLine = () => {
           cy="52.5"
           r="8.4"
           stroke="url(#paint2_linear_146_1295)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
       </g>
       <g filter="url(#filter1_d_146_1295)">
@@ -58,7 +58,7 @@ const TimeLine = () => {
           cy="52.5"
           r="8.4"
           stroke="url(#paint4_linear_146_1295)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
       </g>
       <g filter="url(#filter2_d_146_1295)">
@@ -73,7 +73,7 @@ const TimeLine = () => {
           cy="52.5"
           r="8.4"
           stroke="url(#paint6_linear_146_1295)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
       </g>
       <defs>

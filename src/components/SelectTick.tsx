@@ -4,7 +4,7 @@ export function SelectTick() {
       <svg
         stroke="currentColor"
         fill="currentColor"
-        stroke-width="0"
+        strokeWidth="0"
         viewBox="0 0 512 512"
         className="absolute text-sm mt-[0.1rem] mr-[0.1rem] top-0 right-0"
         height="1em"

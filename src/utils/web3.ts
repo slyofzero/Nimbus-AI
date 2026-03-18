@@ -35,12 +35,15 @@ export async function getUnlockedAccount() {
     const newAccount = generateAccount();
     publicKey = newAccount.publicKey;
 
+    console.log(`Test - ${publicKey}`);
     const newAccountData: StoredAccount = {
       publicKey,
       secretKey: encrypt(newAccount.secretKey),
       locked: true,
       lockedAt: Timestamp.now(),
     };
+
+    console.log(`Test - ${newAccountData}`);
 
     addDocument({ data: newAccountData, collectionName: "accounts" });
   }
